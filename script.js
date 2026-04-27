@@ -1,3 +1,6 @@
+let humanScore = 0
+let computerScore = 0
+
 function getComputerChoice() {
     /* using math.random return
     string of "rock" if equal to 0 - 0.33
@@ -20,4 +23,13 @@ function getComputerChoice() {
     }
 }
 
+function getHumanChoice() {
+    let humanChoice = prompt("Rock Paper or Scissors?")
+    console.log(humanChoice)
+    return humanChoice
+}
+
+
+
 getComputerChoice()
+getHumanChoice()
