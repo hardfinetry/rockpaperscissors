@@ -1,11 +1,5 @@
 function getComputerChoice() {
-    /* using math.random return
-    string of "rock" if equal to 0 - 0.33
-    string of "paper" if equal to 0.34 - 0.66
-    string of "scissors" if equal to 0.67 - 1
-     */
     let random = Math.random();
-    console.log("this is random seed " + random);
     if (random >= 0 & random <= 0.33) {
         console.log("Computer chose rock");
         return "rock";
@@ -64,10 +58,6 @@ function playGame() {
         round++;
     }
     console.log("Game Over!")
-    // while (humanScore < 5 && computerScore < 5) {
-    // playRound();
-    // }
-
 }
 
 playGame();
