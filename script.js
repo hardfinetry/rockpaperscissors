@@ -58,7 +58,15 @@ function playGame() {
         }
     }
 
-    playRound();
+    let round = 0
+    while (round < 5) {
+        playRound();
+        round++;
+    }
+    console.log("Game Over!")
+    // while (humanScore < 5 && computerScore < 5) {
+    // playRound();
+    // }
 
 }
 
