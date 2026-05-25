@@ -1,5 +1,7 @@
 const humanChoiceButtons = document.querySelector("#humanChoiceButtons");
 const results = document.querySelector("#results");
+const humanScoreId = document.querySelector("#humanScoreId");
+const computerScoreId = document.querySelector("#computerScoreId");
 
 let humanScore = 0;
 let computerScore = 0;
@@ -31,7 +33,9 @@ function playRound(humanChoice) {
     ) {
         results.append(`You chose ${humanSelection} and computer chose ${computerSelection}, you lose!`);
         computerScore += 1;
-        results.append(`Human score is ${humanScore} and Computer score is ${computerScore}`);
+        // results.append(`Human score is ${humanScore} and Computer score is ${computerScore}`);
+        humanScoreId.textContent = "Human Score: " + humanScore;
+        computerScoreId.textContent = "Computer Score: " + computerScore;
     }
     else if (
         (humanSelection === "paper" && computerSelection === "rock") ||
@@ -40,7 +44,9 @@ function playRound(humanChoice) {
     ) {
         results.append(`You chose ${humanSelection} and computer chose ${computerSelection}, you win!`);
         humanScore += 1;
-        results.append(`Human score is ${humanScore} and Computer score is ${computerScore}`);
+        // results.append(`Human score is ${humanScore} and Computer score is ${computerScore}`);
+        humanScoreId.textContent = "Human Score: " + humanScore;
+        computerScoreId.textContent = "Computer Score: " + computerScore;
     }
     else {
         results.append(`You chose ${humanSelection} and computer chose ${computerSelection}, it's a draw!`);
