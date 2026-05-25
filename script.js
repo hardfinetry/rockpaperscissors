@@ -1,63 +1,53 @@
+const humanChoiceButtons = document.querySelector("#humanChoiceButtons");
+const results = document.querySelector("#results");
+
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     let random = Math.random();
     if (random >= 0 & random <= 0.33) {
-        console.log("Computer chose rock");
+        results.append("Computer chose rock");
         return "rock";
     }
     else if (random > 0.33 & random <= 0.66) {
-        console.log("Computer chose paper");
+        results.append("Computer chose paper");
         return "paper";
     }
     else if (random > 0.66 & random <= 1) {
-        console.log("Computer chose scissors");
+        results.append("Computer chose scissors");
         return "scissors";
     }
-}
+};
 
-function getHumanChoice() {
-    let humanChoice = prompt("Rock Paper or Scissors?").toLowerCase();
-    console.log("Human chose " + humanChoice);
-    return humanChoice;
-}
+function playRound(humanChoice) {
+    let humanSelection = humanChoice;
+    let computerSelection = getComputerChoice();
 
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-
-    function playRound() {
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
-
-        if (
-            (humanSelection === "rock" && computerSelection === "paper") ||
-            (humanSelection === "paper" && computerSelection === "scissors") ||
-            (humanSelection === "scissors" && computerSelection === "rock")
-        ) {
-            console.log(`You chose ${humanSelection} and computer chose ${computerSelection}, you lose!`);
-            computerScore += 1;
-            console.log(`Human score is ${humanScore} and Computer score is ${computerScore}`);
-        }
-        else if (
-            (humanSelection === "paper" && computerSelection === "rock") ||
-            (humanSelection === "scissors" && computerSelection === "paper") ||
-            (humanSelection === "rock" && computerSelection === "scissors")
-        ) {
-            console.log(`You chose ${humanSelection} and computer chose ${computerSelection}, you win!`);
-            humanScore += 1;
-            console.log(`Human score is ${humanScore} and Computer score is ${computerScore}`);
-        }
-        else {
-            console.log(`You chose ${humanSelection} and computer chose ${computerSelection}, it's a draw!`);
-            console.log(`Human score is ${humanScore} and Computer score is ${computerScore}`);
-        }
+    if (
+        (humanSelection === "rock" && computerSelection === "paper") ||
+        (humanSelection === "paper" && computerSelection === "scissors") ||
+        (humanSelection === "scissors" && computerSelection === "rock")
+    ) {
+        results.append(`You chose ${humanSelection} and computer chose ${computerSelection}, you lose!`);
+        computerScore += 1;
+        results.append(`Human score is ${humanScore} and Computer score is ${computerScore}`);
     }
-
-    let round = 0
-    while (round < 5) {
-        playRound();
-        round++;
+    else if (
+        (humanSelection === "paper" && computerSelection === "rock") ||
+        (humanSelection === "scissors" && computerSelection === "paper") ||
+        (humanSelection === "rock" && computerSelection === "scissors")
+    ) {
+        results.append(`You chose ${humanSelection} and computer chose ${computerSelection}, you win!`);
+        humanScore += 1;
+        results.append(`Human score is ${humanScore} and Computer score is ${computerScore}`);
     }
-    console.log("Game Over!")
-}
+    else {
+        results.append(`You chose ${humanSelection} and computer chose ${computerSelection}, it's a draw!`);
+        results.append(`Human score is ${humanScore} and Computer score is ${computerScore}`);
+    }
+};
 
-playGame();
+humanChoiceButtons.addEventListener("click", (event) => {
+    playRound(event.target.id)
+});
