@@ -48,6 +48,7 @@ function playRound(humanChoice) {
     }
 
     if (humanScore == 5 || computerScore == 5) {
+        humanChoiceButtons.disabled = true;
         isGameOver.textContent = "Game Over!"
     }
 };
